@@ -1,1 +1,1 @@
-# Useful Github Repos [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Useful Github Repos [![Awesome](https://awesome.re/badge.svg)]
