@@ -1,8 +1,7 @@
 ## Frameworks
 [<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white" />](https://github.com/tensorflow/federated)
-[TensorFlow Federated](https://github.com/tensorflow/federated)
 
-## Useful Github Repos [![Let's Go](https://awesome.re/badge.svg)](https://awesome.re)
+## Useful Github Repos [![Let's Go](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://awesome.re)
 [Federated-Learning-Implementations](https://github.com/ayushm-agrawal/Federated-Learning-Implementations)
 
 [flPapers](https://github.com/GillHuang-Xtler/flPapers)
@@ -29,3 +28,4 @@
 
 [FedAVG Paper using Pytorch 2](https://github.com/AshwinRJ/Federated-Learning-PyTorch)
 
+[Awesome-Federated-Learning](https://github.com/chaoyanghe/Awesome-Federated-Learning)
