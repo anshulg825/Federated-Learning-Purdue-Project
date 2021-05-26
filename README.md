@@ -2,8 +2,13 @@
 
 ## Frameworks
 [<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white" />](https://github.com/tensorflow/federated)
+<img alt="Keras" src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white"/>
 
-## Useful Github Repos [![Let's Go](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://awesome.re)
+[Tutorial Session](https://www.youtube.com/watch?v=JBNas6Yd30A&t=150s)
+
+[Classification models trained on ImageNet(Keras)](https://github.com/qubvel/classification_models)
+
+## Useful Federated Implementation [![Let's Go](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://awesome.re)
 [Federated-Learning-Implementations](https://github.com/ayushm-agrawal/Federated-Learning-Implementations)
 
 [flPapers](https://github.com/GillHuang-Xtler/flPapers)
