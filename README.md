@@ -1,5 +1,5 @@
 ## Frameworks
-<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white" />
+[<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white" />](https://github.com/tensorflow/federated)
 [TensorFlow Federated](https://github.com/tensorflow/federated)
 
 ## Useful Github Repos [![Let's Go](https://awesome.re/badge.svg)](https://awesome.re)
