@@ -36,3 +36,5 @@
 [FedAVG Paper using Pytorch 2](https://github.com/AshwinRJ/Federated-Learning-PyTorch)
 
 [Awesome-Federated-Learning](https://github.com/chaoyanghe/Awesome-Federated-Learning)
+
+## Hierarchical FL Papers
