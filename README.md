@@ -2,16 +2,17 @@
 
 ## Frameworks
 [<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white" />](https://github.com/tensorflow/federated)
-<img alt="Keras" src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white"/>
+[<img alt="Keras" src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white"/>](https://tfhub.dev/)
+[<img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white" />](https://github.com/kenshohara/3D-ResNets-PyTorch)
 
 [Federated Tutorial Session](https://www.youtube.com/watch?v=JBNas6Yd30A&t=150s)
-
-[Tensorflow Keras Pre-trained Models](https://tfhub.dev/)
 
 [Classification models trained on ImageNet(Keras)](https://github.com/qubvel/classification_models)
 
 ## Useful Federated Implementation [![Let's Go](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://awesome.re)
 [Federated-Learning-Implementations](https://github.com/ayushm-agrawal/Federated-Learning-Implementations)
+
+[Federated Learning Demo in Python using Socket Programming](https://github.com/ahmedfgad/FederatedLearning)
 
 [flPapers](https://github.com/GillHuang-Xtler/flPapers)
 
