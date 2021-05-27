@@ -4,7 +4,9 @@
 [<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white" />](https://github.com/tensorflow/federated)
 <img alt="Keras" src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white"/>
 
-[Tutorial Session](https://www.youtube.com/watch?v=JBNas6Yd30A&t=150s)
+[Federated Tutorial Session](https://www.youtube.com/watch?v=JBNas6Yd30A&t=150s)
+
+[Tensorflow Keras Pre-trained Models](https://tfhub.dev/)
 
 [Classification models trained on ImageNet(Keras)](https://github.com/qubvel/classification_models)
 
@@ -17,24 +19,24 @@
 
 [FederatedLearningWithSVRG](https://github.com/CharlieDinh/FederatedLearningWithSVRG)
 
-[awesome-federated-learning 1](https://github.com/poga/awesome-federated-learning)
+[Curated List 1](https://github.com/poga/awesome-federated-learning)
 
-[awesome-federated-computing 2](https://github.com/tushar-semwal/awesome-federated-computing)
+[Curated List 2](https://github.com/tushar-semwal/awesome-federated-computing)
+
+[Curated List 3](https://github.com/chaoyanghe/Awesome-Federated-Learning)
 
 [tff_bench](https://github.com/nseyedtalebi/tff_bench)
 
-[https://github.com/montooboss1999/Human-Activity-Recognition-Using-Deep-Learning](Human-Activity-Recognition-Using-Deep-Learning)
+[Human-Activity-Recognition-Using-Deep-Learning](https://github.com/montooboss1999/Human-Activity-Recognition-Using-Deep-Learning)
 
 [federated learning demo for AlexNet on CIFAR-10 dataset](https://github.com/Zing22/tf-fed-demo)
 
 [Tutorials to implement the Federated Averaging algorithm](https://github.com/coMindOrg/federated-averaging-tutorials)
 
-[ implementation of "federated learning: strategies for improving communication efficiency"](https://github.com/mynameisvinn/federated-learning)
+[Implementation of "federated learning: strategies for improving communication efficiency"](https://github.com/mynameisvinn/federated-learning)
 
 [FedAVG Paper using Pytorch 1](https://github.com/shaoxiongji/federated-learning)
 
 [FedAVG Paper using Pytorch 2](https://github.com/AshwinRJ/Federated-Learning-PyTorch)
-
-[Awesome-Federated-Learning](https://github.com/chaoyanghe/Awesome-Federated-Learning)
 
 ## Hierarchical FL Papers
