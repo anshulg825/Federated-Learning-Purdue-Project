@@ -14,7 +14,7 @@
 
 [Federated Learning Demo in Python using Socket Programming](https://github.com/ahmedfgad/FederatedLearning)
 
-[flPapers](https://github.com/GillHuang-Xtler/flPapers)
+[FL Papers (Application, Communication, Incentives, Optimization_Distribution, Personalization and Poison)](https://github.com/GillHuang-Xtler/flPapers)
 
 [federated](https://github.com/dilawarm/federated)
 
