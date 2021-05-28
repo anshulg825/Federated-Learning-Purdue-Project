@@ -40,4 +40,6 @@
 
 [FedAVG Paper using Pytorch 2](https://github.com/AshwinRJ/Federated-Learning-PyTorch)
 
+[Collection of Google research projects related to Federated Learning and Federated Analytics](https://github.com/google-research/federated)
+
 ## Hierarchical FL Papers
