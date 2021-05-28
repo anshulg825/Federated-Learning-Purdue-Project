@@ -37,4 +37,6 @@
 
 [FedAVG Paper Codes (Pytorch)](https://github.com/shaoxiongji/federated-learning)
 
+[Federated learning with PyTorch(contains resnet model implementation)](https://github.com/SarodYatawatta/federated-pytorch-test)
+
 ## Hierarchical FL Papers
