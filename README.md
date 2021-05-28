@@ -16,13 +16,11 @@
 
 [Privacy-Preserving Federated Learning Applied to Decentralized Data](https://github.com/dilawarm/federated)
 
-[FederatedLearningWithSVRG](https://github.com/CharlieDinh/FederatedLearningWithSVRG)
-
 [Curated List 1](https://github.com/poga/awesome-federated-learning)
 
 [Curated List 2](https://github.com/tushar-semwal/awesome-federated-computing)
 
-[Curated List 3](https://github.com/chaoyanghe/Awesome-Federated-Learning)
+[Papers of every field in FL](https://github.com/chaoyanghe/Awesome-Federated-Learning)
 
 [tff_bench](https://github.com/nseyedtalebi/tff_bench)
 
@@ -34,10 +32,10 @@
 
 [Implementation of "federated learning: strategies for improving communication efficiency"](https://github.com/mynameisvinn/federated-learning)
 
-[FedAVG Paper Codes (Pytorch)](https://github.com/shaoxiongji/federated-learning)
-
 [Collection of Google research projects related to Federated Learning and Federated Analytics](https://github.com/google-research/federated)
 
 [FedAvg and FedProx using Pytorch](https://github.com/ayushm-agrawal/Federated-Learning-Implementations)
+
+[FedAVG Paper Codes (Pytorch)](https://github.com/shaoxiongji/federated-learning)
 
 ## Hierarchical FL Papers
