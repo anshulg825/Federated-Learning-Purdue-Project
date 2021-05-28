@@ -40,3 +40,4 @@
 [Federated learning with PyTorch(contains resnet model implementation)](https://github.com/SarodYatawatta/federated-pytorch-test)
 
 ## Hierarchical FL Papers
+[Client-Edge-Cloud Hierarchical Federated Learning](https://arxiv.org/pdf/1905.06641.pdf)
