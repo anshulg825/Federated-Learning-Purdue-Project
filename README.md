@@ -16,11 +16,11 @@
 
 [Privacy-Preserving Federated Learning Applied to Decentralized Data](https://github.com/dilawarm/federated)
 
-[Curated List 1](https://github.com/poga/awesome-federated-learning)
-
-[Curated List 2](https://github.com/tushar-semwal/awesome-federated-computing)
+[FL Papers by Year](https://github.com/tushar-semwal/awesome-federated-computing)
 
 [Papers of every field in FL](https://github.com/chaoyanghe/Awesome-Federated-Learning)
+
+[Federated Vision Datasets](https://github.com/google-research/google-research/tree/master/federated_vision_datasets)
 
 [tff_bench](https://github.com/nseyedtalebi/tff_bench)
 
