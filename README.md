@@ -10,9 +10,7 @@
 [Classification models trained on ImageNet(Keras)](https://github.com/qubvel/classification_models)
 
 ## Useful Federated Implementation [![Let's Go](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://awesome.re)
-[Federated-Learning-Implementations](https://github.com/ayushm-agrawal/Federated-Learning-Implementations)
-
-[Federated Learning Demo in Python using Socket Programming](https://github.com/ahmedfgad/FederatedLearning)
+[Federated Learning Demo using Socket Programming](https://github.com/ahmedfgad/FederatedLearning)
 
 [FL Papers (Application, Communication, Incentives, Optimization_Distribution, Personalization and Poison)](https://github.com/GillHuang-Xtler/flPapers)
 
@@ -36,10 +34,10 @@
 
 [Implementation of "federated learning: strategies for improving communication efficiency"](https://github.com/mynameisvinn/federated-learning)
 
-[FedAVG Paper using Pytorch 1](https://github.com/shaoxiongji/federated-learning)
-
-[FedAVG Paper using Pytorch 2](https://github.com/AshwinRJ/Federated-Learning-PyTorch)
+[FedAVG Paper Codes (Pytorch)](https://github.com/shaoxiongji/federated-learning)
 
 [Collection of Google research projects related to Federated Learning and Federated Analytics](https://github.com/google-research/federated)
+
+[FedAvg and FedProx using Pytorch](https://github.com/ayushm-agrawal/Federated-Learning-Implementations)
 
 ## Hierarchical FL Papers
