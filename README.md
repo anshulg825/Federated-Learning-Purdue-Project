@@ -14,7 +14,7 @@
 
 [FL Papers (Application, Communication, Incentives, Optimization_Distribution, Personalization and Poison)](https://github.com/GillHuang-Xtler/flPapers)
 
-[federated](https://github.com/dilawarm/federated)
+[Privacy-Preserving Federated Learning Applied to Decentralized Data](https://github.com/dilawarm/federated)
 
 [FederatedLearningWithSVRG](https://github.com/CharlieDinh/FederatedLearningWithSVRG)
 
