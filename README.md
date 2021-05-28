@@ -9,7 +9,12 @@
 
 [Classification models trained on ImageNet(Keras)](https://github.com/qubvel/classification_models)
 
-## Useful Federated Implementation [![Let's Go](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://awesome.re)
+## Datasets
+[Federated Vision Datasets](https://github.com/google-research/google-research/tree/master/federated_vision_datasets)
+
+[LEAF](https://leaf.cmu.edu/)
+
+## Useful Repository [![Let's Go](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://awesome.re)
 [Federated Learning Demo using Socket Programming](https://github.com/ahmedfgad/FederatedLearning)
 
 [FL Papers (Application, Communication, Incentives, Optimization_Distribution, Personalization and Poison)](https://github.com/GillHuang-Xtler/flPapers)
@@ -20,17 +25,11 @@
 
 [Papers of every field in FL](https://github.com/chaoyanghe/Awesome-Federated-Learning)
 
-[Federated Vision Datasets](https://github.com/google-research/google-research/tree/master/federated_vision_datasets)
+[Codes for sample datasets using TFF](https://github.com/nseyedtalebi/tff_bench)
 
-[tff_bench](https://github.com/nseyedtalebi/tff_bench)
-
-[Human-Activity-Recognition-Using-Deep-Learning](https://github.com/montooboss1999/Human-Activity-Recognition-Using-Deep-Learning)
-
-[federated learning demo for AlexNet on CIFAR-10 dataset](https://github.com/Zing22/tf-fed-demo)
+[Federated learning demo for AlexNet on CIFAR-10 dataset](https://github.com/Zing22/tf-fed-demo)
 
 [Tutorials to implement the Federated Averaging algorithm](https://github.com/coMindOrg/federated-averaging-tutorials)
-
-[Implementation of "federated learning: strategies for improving communication efficiency"](https://github.com/mynameisvinn/federated-learning)
 
 [Collection of Google research projects related to Federated Learning and Federated Analytics](https://github.com/google-research/federated)
 
