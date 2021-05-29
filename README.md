@@ -39,5 +39,10 @@
 
 [Federated learning with PyTorch(contains resnet model implementation)](https://github.com/SarodYatawatta/federated-pytorch-test)
 
+[Sample Code](https://github.com/harikuts/federated-learning-trials) 
+
 ## Hierarchical FL Papers
-[Client-Edge-Cloud Hierarchical Federated Learning](https://arxiv.org/pdf/1905.06641.pdf)
+[Client-Edge-Cloud Hierarchical Federated Learning](https://arxiv.org/pdf/1905.06641.pdf) [Code1](https://github.com/LuminLiu/HierFL) [Code2](https://github.com/busekabakoglu/FLhierarchicalIDA) 
+
+[Multiple Edge Servers Assignment for Local Device in Hierarchical Federated Learning](https://github.com/nhatanh81096/Multiple-Edge-Servers-Federated-Learning)
+
