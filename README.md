@@ -35,7 +35,7 @@
 
 [FedAvg and FedProx using Pytorch](https://github.com/ayushm-agrawal/Federated-Learning-Implementations)
 
-[FedAVG Paper Codes (Pytorch)](https://github.com/shaoxiongji/federated-learning)
+FedAVG Paper Codes (Pytorch) [1](https://github.com/shaoxiongji/federated-learning) [2](https://github.com/AshwinRJ/Federated-Learning-PyTorch/tree/master/src)
 
 [Federated learning with PyTorch(contains resnet model implementation)](https://github.com/SarodYatawatta/federated-pytorch-test)
 
@@ -44,5 +44,14 @@
 ## Hierarchical FL Papers
 [Client-Edge-Cloud Hierarchical Federated Learning](https://arxiv.org/pdf/1905.06641.pdf) [Code1](https://github.com/LuminLiu/HierFL) [Code2](https://github.com/busekabakoglu/FLhierarchicalIDA) 
 
-[Multiple Edge Servers Assignment for Local Device in Hierarchical Federated Learning](https://github.com/nhatanh81096/Multiple-Edge-Servers-Federated-Learning)
+[HFEL: Joint Edge Association and Resource Allocation for Cost-Efficient Hierarchical Federated Edge Learning](https://arxiv.org/pdf/2002.11343.pdf)
 
+[Federated learning with hierarchical clustering of local updates to improve training on non-IID data](https://arxiv.org/pdf/2004.11791.pdf)
+
+[HierTrain: Fast Hierarchical Edge AI Learning with Hybrid Parallelism in Mobile-Edge-Cloud Computing](https://arxiv.org/pdf/2003.09876.pdf)
+
+[Enhancing Privacy via Hierarchical Federated Learning](https://arxiv.org/pdf/2004.11361.pdf)
+
+[Multiple Edge Servers Assignment for Local Device in Hierarchical Federated Learning (Code)](https://github.com/nhatanh81096/Multiple-Edge-Servers-Federated-Learning)
+
+[Hierarchical Federated Learning with Quantization of Deep Networks from Decentralized Data (Code)](https://github.com/wesleyjtann/Hierarchical-Federated-Learning-Quantization)
