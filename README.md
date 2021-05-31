@@ -46,7 +46,7 @@ FedAVG Paper Codes (Pytorch) [1](https://github.com/shaoxiongji/federated-learni
 
 [HFEL: Joint Edge Association and Resource Allocation for Cost-Efficient Hierarchical Federated Edge Learning](https://arxiv.org/pdf/2002.11343.pdf)
 
-[Hierarchical Federated Learning Across Heterogeneous Cellular Networks](https://arxiv.org/pdf/1909.02362.pdf)
+[Hierarchical Federated Learning Across Heterogeneous Cellular Networks](https://arxiv.org/pdf/1909.02362.pdf) [Code (Not documented well!!)](https://github.com/msalehihabad/hierarchicalFL)
 
 [Federated learning with hierarchical clustering of local updates to improve training on non-IID data](https://arxiv.org/pdf/2004.11791.pdf)
 
