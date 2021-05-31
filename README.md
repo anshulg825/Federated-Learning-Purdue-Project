@@ -52,7 +52,11 @@ FedAVG Paper Codes (Pytorch) [1](https://github.com/shaoxiongji/federated-learni
 
 [HierTrain: Fast Hierarchical Edge AI Learning with Hybrid Parallelism in Mobile-Edge-Cloud Computing](https://arxiv.org/pdf/2003.09876.pdf)
 
+[Optimal User Selection for High-Performance and Stabilized Energy-Efficient Federated Learning Platforms](https://www.mdpi.com/2079-9292/9/9/1359)
+
 [Enhancing Privacy via Hierarchical Federated Learning](https://arxiv.org/pdf/2004.11361.pdf)
+
+[EdgeFed: Optimized Federated Learning Based on Edge Computing](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9260194)
 
 [Multiple Edge Servers Assignment for Local Device in Hierarchical Federated Learning (Code)](https://github.com/nhatanh81096/Multiple-Edge-Servers-Federated-Learning)
 
