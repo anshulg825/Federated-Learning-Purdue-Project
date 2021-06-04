@@ -1,6 +1,3 @@
-"""
-download the required dataset, split the data among the clients, and generate DataLoader for training
-"""
 import os
 from tqdm import tqdm
 from sklearn import metrics

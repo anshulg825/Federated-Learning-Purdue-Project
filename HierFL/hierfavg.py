@@ -1,5 +1,3 @@
-# Flow of the algorithm
-# Client update(t_1) -> Edge Aggregate(t_2) -> Cloud Aggregate(t_3)
 from options import args_parser
 from tensorboardX import SummaryWriter
 import torch
