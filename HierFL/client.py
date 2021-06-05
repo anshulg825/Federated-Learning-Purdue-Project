@@ -1,17 +1,9 @@
-# The structure of the client
-# Should include following funcitons
-# 1. Client intialization, dataloaders, model(include optimizer)
-# 2. Client model update
-# 3. Client send updates to server
-# 4. Client receives updates from server
-# 5. Client modify local model based on the feedback from the server
 from torch.autograd import Variable
 import torch
 from models.initialize_model import initialize_model
 import copy
 
 class Client():
-
     def __init__(self, id, train_loader, test_loader, args, device):
         self.id = id
         self.train_loader = train_loader
@@ -24,12 +16,10 @@ class Client():
         self.epoch = 0
         # record the time
         self.clock = []
-
     def local_update(self, num_iter, device):
         itered_num = 0
         loss = 0.0
         end = False
-        # the upperbound selected in the following is because it is expected that one local update will never reach 1000
         for epoch in range(1000):
             for data in self.train_loader:
                 inputs, labels = data

@@ -1,10 +1,3 @@
-# The structure of the edge server
-# THe edge should include following funcitons
-# 1. Server initialization
-# 2. Server receives updates from the client
-# 3. Server sends the aggregated information back to clients
-# 4. Server sends the updates to the cloud server
-# 5. Server receives the aggregated information from the cloud server
 import copy
 from average import average_weights
 class Edge():

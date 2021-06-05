@@ -328,9 +328,11 @@ def HierFAVG(args):
             writer.add_scalar(f'Partial_Avg_Train_loss',
                           all_loss,
                           num_comm* args.num_edge_aggregation + num_edgeagg +1)
+            #add curve
             writer.add_scalar(f'All_Avg_Test_Acc_edgeagg',
                           avg_acc,
                           num_comm * args.num_edge_aggregation + num_edgeagg + 1)
+            #add curve
 
         # Now begin the cloud aggregation
         for edge in edges:
@@ -346,6 +348,7 @@ def HierFAVG(args):
         writer.add_scalar(f'All_Avg_Test_Acc_cloudagg_Vtest',
                           avg_acc_v,
                           num_comm + 1)
+        # add curve
 
     writer.close()
     print(f"The final virtual acc is {avg_acc_v}")

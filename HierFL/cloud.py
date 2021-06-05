@@ -1,8 +1,3 @@
-# The structure of the server
-# The server should include the following functions:
-# 1. Server initialization
-# 2. Server reveives updates from the user
-# 3. Server send the aggregated information back to clients
 import copy
 from average import average_weights
 class Cloud():
