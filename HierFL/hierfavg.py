@@ -13,6 +13,7 @@ from models.cifar_cnn_3conv_layer import cifar_cnn_3conv
 from models.cifar_resnet import ResNet18
 from models.mnist_logistic import LogisticRegression
 import os
+from matplotlib import pyplot as plt
 
 def get_client_class(args, clients):
     client_class = []
@@ -194,6 +195,9 @@ def initialize_global_nn(args):
 
 def HierFAVG(args):
     #make experiments repeatable
+    all_loss_total = []
+    avg_acc_total = []
+    avg_acc_v_total = []
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
     if args.cuda:
@@ -214,7 +218,7 @@ def HierFAVG(args):
             train_loader = train_loaders[i]
             print(len(train_loader.dataset))
             distribution = show_distribution(train_loader, args)
-            print("train dataloader {} distribution".format(i))
+            print("train dataloader {} distribution".format(i+1))
             print(distribution)
 
         for i in range(args.num_clients):
@@ -222,7 +226,7 @@ def HierFAVG(args):
             test_size = len(test_loaders[i].dataset)
             print(len(test_loader.dataset))
             distribution = show_distribution(test_loader, args)
-            print("test dataloader {} distribution".format(i))
+            print("test dataloader {} distribution".format(i+1))
             print(f"test dataloader size {test_size}")
             print(distribution)
     # initialize clients and server
@@ -234,14 +238,12 @@ def HierFAVG(args):
                               args=args,
                               device=device)
                        )
-
     initilize_parameters = list(clients[0].model.shared_layers.parameters())
     nc = len(initilize_parameters)
     for client in clients:
         user_parameters = list(client.model.shared_layers.parameters())
         for i in range(nc):
             user_parameters[i].data[:] = initilize_parameters[i].data[:]
-
     # Initialize edge server and assign clients to the edge server
     edges = []
     cids = np.arange(args.num_clients)
@@ -262,7 +264,7 @@ def HierFAVG(args):
                                                      args=args,
                                                      client_class_dis=client_class_dis)
     else:
-        # This is randomly assign the clients to edges
+        # This will randomly assign the clients to edges
         for i in range(args.num_edges):
             #Randomly select clients and assign them
             selected_cids = np.random.choice(cids, clients_per_edge, replace=False)
@@ -317,7 +319,6 @@ def HierFAVG(args):
                     clients[selected_cid].send_to_edgeserver(edge)
                 edge_loss[i] = client_loss
                 edge_sample[i] = sum(edge.sample_registration.values())
-
                 edge.aggregate(args)
                 correct, total = all_clients_test(edge, clients, edge.cids, device)
                 correct_all += correct
@@ -328,12 +329,11 @@ def HierFAVG(args):
             writer.add_scalar(f'Partial_Avg_Train_loss',
                           all_loss,
                           num_comm* args.num_edge_aggregation + num_edgeagg +1)
-            #add curve
+            all_loss_total.append([all_loss, num_comm* args.num_edge_aggregation + num_edgeagg +1])
             writer.add_scalar(f'All_Avg_Test_Acc_edgeagg',
                           avg_acc,
                           num_comm * args.num_edge_aggregation + num_edgeagg + 1)
-            #add curve
-
+            avg_acc_total.append([avg_acc, num_comm * args.num_edge_aggregation + num_edgeagg + 1])
         # Now begin the cloud aggregation
         for edge in edges:
             edge.send_to_cloudserver(cloud)
@@ -348,11 +348,16 @@ def HierFAVG(args):
         writer.add_scalar(f'All_Avg_Test_Acc_cloudagg_Vtest',
                           avg_acc_v,
                           num_comm + 1)
-        # add curve
-        
+        avg_acc_v_total.append([avg_acc_v, num_comm + 1])
     writer.close()
     print(f"The final virtual acc is {avg_acc_v}")
-    
+    x = []
+    y = []
+    for i in avg_acc_v_total:
+        x.append(i[1])
+        y.append(i[0])
+    plt.plot(y,x)
+    plt.show()
 def main():
     args = args_parser()
     HierFAVG(args)
