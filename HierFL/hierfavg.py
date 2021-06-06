@@ -352,7 +352,6 @@ def HierFAVG(args):
     writer.close()
     print(f"The final virtual acc is {avg_acc_v}")
 def main():
-    %matplotlib inline
     args = args_parser()
     HierFAVG(args)
     x = []
