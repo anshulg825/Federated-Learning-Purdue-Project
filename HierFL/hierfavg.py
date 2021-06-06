@@ -14,6 +14,7 @@ from models.cifar_resnet import ResNet18
 from models.mnist_logistic import LogisticRegression
 import os
 from matplotlib import pyplot as plt
+%matplotlib inline
 
 def get_client_class(args, clients):
     client_class = []
