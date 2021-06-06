@@ -31,9 +31,6 @@ def gen_ran_sum(_sum, num_users):
     print(size_users.sum())
     return size_users
 def get_mean_and_std(dataset):
-    """
-    compute the mean and std value of dataset
-    """
     dataloader = DataLoader(dataset, batch_size = 1, shuffle = True, num_workers = 2)
     mean = torch.zeros(3)
     std = torch.zeros(3)
@@ -43,14 +40,9 @@ def get_mean_and_std(dataset):
             mean[i] += inputs[:,i,:,:].mean()
             std[i] += inputs[:,i,:,:].std()
     mean.div_(len(dataset))
-    std.div_(len(dataset))
+    std.div_(len(dataset)) 
     return mean, std
 def iid_esize_split(dataset, args, kwargs, is_shuffle = True):
-    """
-    split the dataset to users
-    Return:
-        dict of the data_loaders
-    """
     sum_samples = len(dataset)
     num_samples_per_client = int(sum_samples / args.num_clients)
     # change from dict to list
@@ -58,13 +50,10 @@ def iid_esize_split(dataset, args, kwargs, is_shuffle = True):
     dict_users, all_idxs = {}, [i for i in range(len(dataset))]
     for i in range(args.num_clients):
         dict_users[i] = np.random.choice(all_idxs, num_samples_per_client, replace = False)
-        #dict_users[i] = dict_users[i].astype(int)
-        #dict_users[i] = set(dict_users[i])
         all_idxs = list(set(all_idxs) - set(dict_users[i]))
         data_loaders[i] = DataLoader(DatasetSplit(dataset, dict_users[i]),
                                     batch_size = args.batch_size,
                                     shuffle = is_shuffle, **kwargs)
-
     return data_loaders
 def iid_nesize_split(dataset, args, kwargs, is_shuffle = True):
     sum_samples = len(dataset)
@@ -74,13 +63,10 @@ def iid_nesize_split(dataset, args, kwargs, is_shuffle = True):
     dict_users, all_idxs = {}, [i for i in range(len(dataset))]
     for (i, num_samples_client) in enumerate(num_samples_per_client):
         dict_users[i] = np.random.choice(all_idxs, num_samples_client, replace = False)
-        #dict_users[i] = dict_users[i].astype(int)
-        #dict_users[i] = set(dict_users[i])
         all_idxs = list(set(all_idxs) - set(dict_users[i]))
         data_loaders[i] = DataLoader(DatasetSplit(dataset, dict_users[i]),
                                     batch_size = args.batch_size,
                                     shuffle = is_shuffle, **kwargs)
-
     return data_loaders
 def niid_esize_split(dataset, args, kwargs, is_shuffle = True):
     data_loaders = [0] * args.num_clients
@@ -101,7 +87,6 @@ def niid_esize_split(dataset, args, kwargs, is_shuffle = True):
     # sort the data according to their label
     idxs = idxs_labels[0,:]
     idxs = idxs.astype(int)
-
     #divide and assign
     for i in range(args.num_clients):
         rand_set = set(np.random.choice(idx_shard, 2, replace= False))
@@ -121,7 +106,7 @@ def niid_esize_split_train(dataset, args, kwargs, is_shuffle = True):
     idx_shard = [i for i in range(num_shards)]
     dict_users = {i: np.array([]) for i in range(args.num_clients)}
     idxs = np.arange(num_shards * num_imgs)
-#     no need to judge train ans test here
+#     no need to judge train and test here
     labels = dataset.targets
     idxs_labels = np.vstack((idxs, labels))
     idxs_labels = idxs_labels[:, idxs_labels[1,:].argsort()]
@@ -151,7 +136,7 @@ def niid_esize_split_test(dataset, args, kwargs, split_pattern,  is_shuffle = Fa
     idx_shard = [i for i in range(num_shards)]
     dict_users = {i: np.array([]) for i in range(args.num_clients)}
     idxs = np.arange(num_shards * num_imgs)
-    #     no need to judge train ans test here
+    #     no need to judge train and test here
     labels = dataset.targets
     idxs_labels = np.vstack((idxs, labels))
     idxs_labels = idxs_labels[:, idxs_labels[1, :].argsort()]
@@ -269,9 +254,6 @@ def niid_esize_split_oneclass(dataset, args, kwargs, is_shuffle = True):
     return data_loaders
 
 def split_data(dataset, args, kwargs, is_shuffle = True):
-    """
-    return dataloaders
-    """
     if args.iid == 1:
         data_loaders = iid_esize_split(dataset, args, kwargs, is_shuffle)
     elif args.iid == 0:
@@ -318,7 +300,6 @@ def get_mnist(dataset_root, args):
     v_test_loader = DataLoader(test, batch_size = args.batch_size * args.num_clients,
                                 shuffle = False, **kwargs)
     return  train_loaders, test_loaders, v_train_loader, v_test_loader
-
 
 def get_cifar10(dataset_root, args):
     is_cuda = args.cuda
@@ -379,8 +360,6 @@ def show_distribution(dataloader, args):
             print(f"Using test_labels")
             labels = dataloader.dataset.dataset.targets
         # labels = dataloader.dataset.dataset.targets
-    elif args.dataset == 'fsdd':
-        labels = dataloader.dataset.labels
     else:
         raise ValueError("`{}` dataset not included".format(args.dataset))
     num_samples = len(dataloader.dataset)
@@ -406,5 +385,5 @@ if __name__ == '__main__':
         train_loader = train_loaders[i]
         print(len(train_loader.dataset))
         distribution = show_distribution(train_loader, args)
-        print("dataloader {} distribution".format(i))
+        print("dataloader {} distribution".format(i+1))
         print(distribution)

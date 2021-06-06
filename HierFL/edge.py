@@ -39,11 +39,6 @@ class Edge():
         self.receiver_buffer[client_id] = cshared_state_dict
         return None
     def aggregate(self, args):
-        """
-        Using the old aggregation funciton
-        :param args:
-        :return:
-        """
         received_dict = [dict for dict in self.receiver_buffer.values()]
         sample_num = [snum for snum in self.sample_registration.values()]
         self.shared_state_dict = average_weights(w = received_dict,

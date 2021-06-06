@@ -26,6 +26,6 @@ class Cloud():
         self.shared_state_dict = average_weights(w=received_dict,
                                                  s_num=sample_num)
         return None
-    def send_to_edge(self, edge):
+    def send_to_edge(self, edge): 
         edge.receive_from_cloudserver(copy.deepcopy(self.shared_state_dict))
         return None

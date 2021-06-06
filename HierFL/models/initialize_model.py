@@ -4,6 +4,7 @@ from models.mnist_cnn import mnist_lenet
 from models.mnist_logistic import LogisticRegression
 import torch.optim as optim
 import torch.nn as nn
+import torch
 
 class MTL_Model(object):
     def __init__(self, shared_layers, specific_layers, learning_rate, lr_decay, lr_decay_epoch, momentum, weight_decay):

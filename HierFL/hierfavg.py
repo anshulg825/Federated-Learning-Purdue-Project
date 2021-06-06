@@ -349,10 +349,10 @@ def HierFAVG(args):
                           avg_acc_v,
                           num_comm + 1)
         # add curve
-
+        
     writer.close()
     print(f"The final virtual acc is {avg_acc_v}")
-
+    
 def main():
     args = args_parser()
     HierFAVG(args)
