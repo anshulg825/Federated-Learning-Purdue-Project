@@ -351,6 +351,10 @@ def HierFAVG(args):
         avg_acc_v_total.append([avg_acc_v, num_comm + 1])
     writer.close()
     print(f"The final virtual acc is {avg_acc_v}")
+def main():
+    %matplotlib inline
+    args = args_parser()
+    HierFAVG(args)
     x = []
     y = []
     for i in avg_acc_v_total:
@@ -358,8 +362,5 @@ def HierFAVG(args):
         y.append(i[0])
     plt.plot(y,x)
     plt.show()
-def main():
-    args = args_parser()
-    HierFAVG(args)
 if __name__ == '__main__':
     main()
