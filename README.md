@@ -5,6 +5,8 @@
 [<img alt="Keras" src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white"/>](https://tfhub.dev/)
 [<img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white" />](https://github.com/kenshohara/3D-ResNets-PyTorch)
 
+[Openmined Privacy Courses](https://courses.openmined.org/courses)
+
 [Federated Tutorial Session](https://www.youtube.com/watch?v=JBNas6Yd30A&t=150s)
 
 [Classification models trained on ImageNet(Keras)](https://github.com/qubvel/classification_models)
@@ -40,6 +42,8 @@ FedAVG Paper Codes (Pytorch) [1](https://github.com/shaoxiongji/federated-learni
 [Federated learning with PyTorch(contains resnet model implementation)](https://github.com/SarodYatawatta/federated-pytorch-test)
 
 [Sample Code](https://github.com/harikuts/federated-learning-trials) 
+
+[Federated Learning with Unreliable Clients: Performance Analysis and Mechanism Design](https://github.com/JJisbug/UnreliableClientsinFL)
 
 ## Hierarchical FL Papers
 [Client-Edge-Cloud Hierarchical Federated Learning](https://arxiv.org/pdf/1905.06641.pdf) [Code1](https://github.com/LuminLiu/HierFL) [Code2](https://github.com/busekabakoglu/FLhierarchicalIDA) 
