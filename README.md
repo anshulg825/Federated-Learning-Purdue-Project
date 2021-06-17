@@ -45,6 +45,8 @@ FedAVG Paper Codes (Pytorch) [1](https://github.com/shaoxiongji/federated-learni
 
 [Federated Learning with Unreliable Clients: Performance Analysis and Mechanism Design](https://github.com/JJisbug/UnreliableClientsinFL)
 
+[Pytorch Action Recognition](https://github.com/jfzhang95/pytorch-video-recognition)
+
 ## Hierarchical FL Papers
 [Client-Edge-Cloud Hierarchical Federated Learning](https://arxiv.org/pdf/1905.06641.pdf) [Code1](https://github.com/LuminLiu/HierFL) [Code2](https://github.com/busekabakoglu/FLhierarchicalIDA) 
 
