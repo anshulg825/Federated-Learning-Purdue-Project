@@ -1,24 +1,17 @@
 import socket
+import time 
+import pickle
 
-TCP_IP = 'localhost'
-TCP_PORT = 9001
+host = 'localhost'
+TCP_PORT = 5000
 BUFFER_SIZE = 1024
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((TCP_IP, TCP_PORT))
-with open('received_file', 'wb') as f:
-    print('file opened')
-    while True:
-        #print('receiving data...')
-        data = s.recv(BUFFER_SIZE)
-        print('data=%s', (data))
-        if not data:
-            f.close()
-            print('file close()')
-            break
-        # write data to a file
-        f.write(data)
+s1 = socket.socket()
+s1.connect((host, TCP_PORT))
+print("connected")
 
-print('Successfully get the file')
-s.close()
-print('connection closed')
+while True:
+    tm = s1.recv(1024)
+    print("The time got from the server is %s" % pickle.loads(tm))
+    currentTime = time.ctime(time.time()) + "\r\n"
+    s1.sendall(pickle.dumps(currentTime))
