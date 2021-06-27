@@ -18,7 +18,76 @@ import transforms as T
 import matplotlib.pyplot as plt
 import numpy as np 
 
+num_classes = 51
+batch_size = 12
+log_interval = 1
+# num_epochs = 200
+num_frames = 8
+clip_steps = 50
+
+val_split = 0.1
+
+random_seed = 1
+learning_rate = 0.001
+momentum = 0.9
+
+client_num_epochs = 2  
+num_iter = 10
+num_users = 3
+global_epoch_tracker = 0
+global_loss = []
+global_correct_accuracy = []
+client_loss = []
+
+
+torch.manual_seed(random_seed)
+np.random.seed(random_seed)
+
+
+class Net(nn.Module):
+  def __init__(self):
+      super(Net, self).__init__()
+      self.base_model = nn.Sequential(*list(models.video.r3d_18(pretrained=True).children())[:-1])
+      self.fc = nn.Linear(512, 51)
+
+  def forward(self, x):
+      out = self.base_model(x)
+      out = out.flatten(1)
+      out = self.fc(out)
+      return out
+
+def set_parameter_requires_grad_video(model):
+    for param in model.parameters():
+        param.requires_grad = False
+    model.fc.weight.requires_grad = True
+    model.fc.bias.requires_grad = True
+
+global_network = Net()
+global_network = global_network.to("cuda")
+set_parameter_requires_grad_video(global_network)
+criterion = nn.CrossEntropyLoss()
+
+def validation(model):
+    global test_loader, criterion
+    model.eval()
+    test_loss = 0.0
+    correct = 0
+    with torch.no_grad():
+        for data, target in test_loader:
+            output = model(data)
+            
+            test_loss += criterion(output, target).item()
+            prediction = output.argmax(dim=1, keepdim=True)
+            correct += prediction.eq(target.view_as(prediction)).sum().item()
+
+    test_loss /= len(test_loader)
+    correct /= len(test_loader.dataset)
+
+    return (test_loss, correct)
+
+
 class SocketThread1(threading.Thread):
+
     def __init__(self, connection, client_info, buffer_size = 1024):
         threading.Thread.__init__(self)
         self.connection = connection
