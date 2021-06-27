@@ -30,7 +30,7 @@ edge_client_socket1.bind((host, TCP_PORT2))
 edge_client_socket1.listen(5)                                           
 print("Connected")
 
-class SocketThread2(threading.Thread):
+class SocketThread(threading.Thread):
     def __init__(self, connection, client_info, buffer_size = 1024):
         threading.Thread.__init__(self)
         self.connection = connection
@@ -55,7 +55,7 @@ class SocketThread2(threading.Thread):
 
 for i in range(2):
     connection, client_info = edge_client_socket1.accept()
-    socket_thread = SocketThread2(connection=connection,client_info=client_info)
+    socket_thread = SocketThread(connection=connection,client_info=client_info)
     socket_thread.start()
 
 while True:
