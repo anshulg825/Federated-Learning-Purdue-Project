@@ -53,6 +53,13 @@ class SocketThread(threading.Thread):
             received_data = self.recv()
             print("The time got from the client is %s",received_data, self.client_info)
 
+def recv(soc, buffer_size=1024):
+    received_data = b""
+    while str(received_data)[-2] != '.':
+        received_data += soc.recv(buffer_size)
+    received_data = pickle.loads(received_data)
+    return received_data
+
 for i in range(2):
     connection, client_info = edge_client_socket1.accept()
     socket_thread = SocketThread(connection=connection,client_info=client_info)
