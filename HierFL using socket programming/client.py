@@ -11,21 +11,16 @@ import socket
 import time
 import threading
 import pickle
-
 import torch
 import torchvision
 from torchvision import datasets, transforms
 from torchvision.models.video import r3d_18 
-
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
-
 import os
 import copy
 import transforms as T
-
-import matplotlib.pyplot as plt
 import numpy as np 
 
 host = 'localhost' #Enter edge server IP and Port here
@@ -48,9 +43,9 @@ kwargs = {'num_workers':num_workers, 'pin_memory':True} if torch.cuda.is_availab
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 stop_flag = 0
 
-random_seed = 1
-torch.manual_seed(random_seed)
-np.random.seed(random_seed)
+SEED = 1
+torch.manual_seed(SEED)
+np.random.seed(SEED)
 torch.cuda.manual_seed(SEED)
 
 train_tfms = torchvision.transforms.Compose([T.ToFloatTensorInZeroOne(),

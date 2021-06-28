@@ -30,6 +30,12 @@ edge_client_socket1.bind((host, TCP_PORT2))
 edge_client_socket1.listen(5)                                           
 print("Connected")
 
+def average_function(receive_buffer):
+    w_avg = copy.deepcopy(receive_buffer[0])
+    for key in w_avg.keys():
+        w_avg[key] = (receive_buffer[0][key] + receive_buffer[1][key])/2.
+    return w_avg
+
 class SocketThread(threading.Thread):
     def __init__(self, connection, client_info, buffer_size = 1024):
         threading.Thread.__init__(self)
