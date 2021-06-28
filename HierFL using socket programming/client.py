@@ -13,7 +13,7 @@ import threading
 import pickle
 import torch
 import torchvision
-from torchvision import datasets, transforms
+from torchvision import datasets
 from torchvision.models.video import r3d_18 
 import torch.nn as nn
 import torch.nn.functional as F
@@ -25,7 +25,6 @@ import numpy as np
 
 host = 'localhost' #Enter edge server IP and Port here
 TCP_PORT = 6000
-BUFFER_SIZE = 1024
 
 data_dir = "./video_data"
 annotations = "./test_train_splits"
@@ -104,7 +103,7 @@ optimizer = torch.optim.Adam(network.parameters(), lr=lr, weight_decay=decay_reg
 num_items = int(total_train_samples/4)
 #all_idxs = [i for i in range(total_train_samples)]
 #idxs = np.random.choice(all_idxs, num_items, replace = False)
-idxs = [i for i in range(0,num_items)] # Replace different values for four clients
+idxs = [i for i in range(0,num_items)]   # Replace different values for four clients
 train_loader = DataLoader(DatasetSplit(hmdb51_train, idxs), batch_size = batch_size_train, shuffle = True, **kwargs)
 
 def train(num_local_update, train_loader):
@@ -127,14 +126,16 @@ if (stop_flag != 1):
     while(True):
         received_data = recv(soc=soc, buffer_size=1024)
         stop_flag = received_data["flag"]
-        if(stop_flag == 1):
-            break
+
         network_state_dict = received_data["data"]
         network.load_state_dict(network_state_dict)
         updated_state_dict, updated_loss = train(num_epochs=num_local_update,train_loader=train_loader)
         data = {"data":updated_state_dict,"loss":updated_loss,"local_iteration":local_client_epoch}
         soc.sendall(pickle.dumps(data))
         local_client_epoch = local_client_epoch + 1
+
+        if(stop_flag == 1):
+            break
 
 soc.close()
 print("Socket Closed.\n")

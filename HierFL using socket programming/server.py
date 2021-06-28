@@ -13,7 +13,7 @@ import threading
 import pickle
 import torch
 import torchvision
-from torchvision import datasets, transforms
+from torchvision import datasets
 from torchvision.models.video import r3d_18 
 import torch.nn as nn
 import torch.nn.functional as F
@@ -27,7 +27,6 @@ import numpy as np
 
 host = 'localhost'                          
 port = 5000
-BUFFER_SIZE = 1024
 
 num_edges = 2
 batch_size = 12
@@ -50,8 +49,7 @@ torch.cuda.manual_seed(SEED)
 threads = []
 buffer = []
 
-test_tfms =  torchvision.transforms.Compose([
-                                             T.ToFloatTensorInZeroOne(),
+test_tfms =  torchvision.transforms.Compose([T.ToFloatTensorInZeroOne(),
                                              T.Resize((128, 171)),
                                              T.Normalize(mean=[0.43216, 0.394666, 0.37645], std=[0.22803, 0.22145, 0.216989]),
                                              T.CenterCrop((112, 112))
@@ -132,7 +130,7 @@ class SocketThread(threading.Thread):
         received_data = self.recv()
         network_state_dict = received_data["data"]
         buffer.append(network_state_dict)
-            
+           
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 print("Socket Created.\n")
 
