@@ -82,24 +82,20 @@ class SocketThread(threading.Thread):
         network_state_dict = received_data["data"]
         buffer.append(network_state_dict)
 
-cloud_edge_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 edge_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("Socket Created.\n")
 
 edge_client_socket.bind((host, TCP_PORT2))                                  
-cloud_edge_socket.connect((host, TCP_PORT))
 edge_client_socket.listen(5)                                           
 print("Socket is Listening for Connections ....\n")
 
-for i in range(num_clients):
-    connection, client_info = edge_client_socket.accept()
-    socket_thread = SocketThread(connection=connection,client_info=client_info, buffer_size=4096)
-    threads.append(socket_thread)
-print("Threading process done!")
-
 while(True):
     
-    global global_network, buffer, stop_flag
+    global global_network, buffer, stop_flag, threads
+
+    cloud_edge_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    cloud_edge_socket.connect((host, TCP_PORT))
+    
     received_data = recv(soc=cloud_edge_socket, buffer_size=1024)
     stop_flag = received_data["flag"]
     
@@ -107,7 +103,15 @@ while(True):
     global_network.load_state_dict(network_state_dict)
     
     for epoch in range(num_edge_agg):
+        threads = []
         buffer = []
+
+        for i in range(num_clients):
+            connection, client_info = edge_client_socket.accept()
+            socket_thread = SocketThread(connection=connection,client_info=client_info, buffer_size=4096)
+            threads.append(socket_thread)
+        print("Threading process done!")
+
         for thread in threads:
             thread.start()
             thread.join()
@@ -117,8 +121,10 @@ while(True):
         global_network.load_state_dict(average_dict)
 
     data = {"data": global_network.state_dict()}
-    cloud_edge_socket.sendall(pickle.dumps(data))    
     
+    cloud_edge_socket.sendall(pickle.dumps(data))    
+    cloud_edge_socket.close()
+
     if(stop_flag == 1):
         break
 

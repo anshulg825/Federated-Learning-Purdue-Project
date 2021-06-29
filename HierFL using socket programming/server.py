@@ -140,19 +140,22 @@ print("Socket Bound to IPv4 Address & Port Number.\n")
 serversocket.listen(5)            
 print("Socket is Listening for Connections ....\n")
 
-for i in range(num_edges):
-    connection, client_info = soc.accept()
-    socket_thread = SocketThread(connection=connection,client_info=client_info, buffer_size=4096)
-    threads.append(socket_thread)
-print("Threading process done!")
-
 for epoch in range(num_comm):
-    global global_network, buffer, global_epoch_tracker
+    global global_network, buffer, global_epoch_tracker, threads
     buffer = []
+    threads = []
+
+    for i in range(num_edges):
+        connection, client_info = soc.accept()
+        socket_thread = SocketThread(connection=connection,client_info=client_info, buffer_size=4096)
+        threads.append(socket_thread)
+    print("Threading process done!")
+
     for thread in threads:
         thread.start()
         thread.join()
     print(len(buffer))
+    
     average_dict = average_function(receive_buffer = buffer)
     global_network.load_state_dict(average_dict)
     loss, accuracy = validation(model = global_network)

@@ -75,10 +75,6 @@ def recv(soc, buffer_size=1024):
     received_data = pickle.loads(received_data)
     return received_data
 
-soc = socket.socket()
-soc.connect((host, TCP_PORT))
-print("connected")
-
 class VideoRecog_Model(nn.Module):
   def __init__(self):
       super(VideoRecog_Model, self).__init__()
@@ -124,11 +120,15 @@ def train(num_local_update, train_loader):
 
 if (stop_flag != 1):    
     while(True):
+        soc = socket.socket()
+        soc.connect((host, TCP_PORT))
+        print("connected")
+        
         received_data = recv(soc=soc, buffer_size=1024)
         stop_flag = received_data["flag"]
-
         network_state_dict = received_data["data"]
         network.load_state_dict(network_state_dict)
+        
         updated_state_dict, updated_loss = train(num_epochs=num_local_update,train_loader=train_loader)
         data = {"data":updated_state_dict,"loss":updated_loss,"local_iteration":local_client_epoch}
         soc.sendall(pickle.dumps(data))
@@ -136,6 +136,8 @@ if (stop_flag != 1):
 
         if(stop_flag == 1):
             break
+        
+        soc.close()
 
 soc.close()
 print("Socket Closed.\n")
