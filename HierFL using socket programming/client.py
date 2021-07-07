@@ -1,13 +1,5 @@
-"""
-Run these before starting code
-! apt-get install libavformat-dev libavdevice-dev
-! pip install av==6.2.0
-! wget http://serre-lab.clps.brown.edu/wp-content/uploads/2013/10/hmdb51_org.rar
-! wget http://serre-lab.clps.brown.edu/wp-content/uploads/2013/10/test_train_splits.rar
-! wget https://raw.githubusercontent.com/pytorch/vision/6de158c473b83cf43344a0651d7c01128c7850e6/references/video_classification/transforms.py
-"""
-
 import socket
+import av
 import time
 import threading
 import pickle
@@ -26,8 +18,8 @@ import numpy as np
 host = 'localhost' #Enter edge server IP and Port here
 TCP_PORT = 6000
 
-data_dir = "./video_data"
-annotations = "./test_train_splits"
+data_dir = "video_data/"
+annotations = "test_train_splits/"
 
 num_local_update = 3 
 batch_size_train = 8

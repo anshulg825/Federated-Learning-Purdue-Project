@@ -1,5 +1,6 @@
 import socket
 import time
+import av
 import threading
 import pickle
 import torch
@@ -17,7 +18,7 @@ TCP_PORT2 = 6000
 buffer = []
 stop_flag = 0
 num_clients = 2
-num_edge_agg = 10 
+num_edge_agg = 3
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 SEED = 1
@@ -47,9 +48,6 @@ def set_parameter_requires_grad_video(model):
         param.requires_grad = False
     model.fc.weight.requires_grad = True
     model.fc.bias.requires_grad = True
-
-global_network = VideoRecog_Model().to(device)
-set_parameter_requires_grad_video(global_network)
 
 def average_function(receive_buffer):
     w_avg = copy.deepcopy(receive_buffer[0])
@@ -82,52 +80,55 @@ class SocketThread(threading.Thread):
         network_state_dict = received_data["data"]
         buffer.append(network_state_dict)
 
-edge_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print("Socket Created.\n")
+if __name__ == '__main__':
 
-edge_client_socket.bind((host, TCP_PORT2))                                  
-edge_client_socket.listen(5)                                           
-print("Socket is Listening for Connections ....\n")
+    global_network = VideoRecog_Model().to(device)
+    set_parameter_requires_grad_video(global_network)
 
-while(True):
-    
-    global global_network, buffer, stop_flag, threads
+    edge_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print("Socket Created.\n")
 
-    cloud_edge_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    cloud_edge_socket.connect((host, TCP_PORT))
-    
-    received_data = recv(soc=cloud_edge_socket, buffer_size=1024)
-    stop_flag = received_data["flag"]
-    
-    network_state_dict = received_data["data"]
-    global_network.load_state_dict(network_state_dict)
-    
-    for epoch in range(num_edge_agg):
-        threads = []
-        buffer = []
+    edge_client_socket.bind((host, TCP_PORT2))                                  
+    edge_client_socket.listen(5)                                           
+    print("Socket is Listening for Connections ....\n")
 
-        for i in range(num_clients):
-            connection, client_info = edge_client_socket.accept()
-            socket_thread = SocketThread(connection=connection,client_info=client_info, buffer_size=4096)
-            threads.append(socket_thread)
-        print("Threading process done!")
+    while(True):
+        
+        cloud_edge_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        cloud_edge_socket.connect((host, TCP_PORT))
+        
+        received_data = recv(soc=cloud_edge_socket, buffer_size=1024)
+        stop_flag = received_data["flag"]
+        
+        network_state_dict = received_data["data"]
+        global_network.load_state_dict(network_state_dict)
+        
+        for epoch in range(num_edge_agg):
+            threads = []
+            buffer = []
 
-        for thread in threads:
-            thread.start()
-            thread.join()
+            for i in range(num_clients):
+                connection, client_info = edge_client_socket.accept()
+                socket_thread = SocketThread(connection=connection,client_info=client_info, buffer_size=4096)
+                threads.append(socket_thread)
+            print("Threading process done!")
 
-        print("Length of buffer is ", len(buffer))
-        average_dict = average_function(receive_buffer = buffer)
-        global_network.load_state_dict(average_dict)
+            for thread in threads:
+                thread.start()
+                thread.join()
 
-    data = {"data": global_network.state_dict()}
-    
-    cloud_edge_socket.sendall(pickle.dumps(data))    
+            print("Length of buffer is ", len(buffer))
+            average_dict = average_function(receive_buffer = buffer)
+            global_network.load_state_dict(average_dict)
+
+        data = {"data": global_network.state_dict()}
+        
+        cloud_edge_socket.sendall(pickle.dumps(data))    
+        cloud_edge_socket.close()
+
+        if(stop_flag == 1):
+            break
+
     cloud_edge_socket.close()
-
-    if(stop_flag == 1):
-        break
-
-cloud_edge_socket.close()
-edge_client_socket.close()
-print("Socket Closed.\n")
+    edge_client_socket.close()
+    print("Socket Closed.\n")
